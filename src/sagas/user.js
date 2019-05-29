@@ -6,6 +6,7 @@ function* handleUserLogin(action) {
   if (result !== 'error') {
     yield setUser(result);
   }
+  // else put action to show error
 }
 
 export {

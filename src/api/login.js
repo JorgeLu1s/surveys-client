@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const login = ({ email, password }) =>
-  axios.post('http://localhost:3000/v1/user_token', { auth: { email, password } })
+  axios.post(`${process.env.REACT_APP_BASE_URL}/user_token`, { auth: { email, password } })
   .then(response => response.data)
   .catch(error => 'error');
 
