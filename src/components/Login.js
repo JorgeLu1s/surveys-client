@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { doLogin } from '../actions/user';
+import { Redirect } from 'react-router-dom';
+import { hasSession } from '../selectors/user';
 
 class Login extends Component {
   state = {
@@ -27,6 +29,12 @@ class Login extends Component {
   }
 
   render() {
+    const  { hasSession } = this.props;
+
+    if (hasSession) {
+      return <Redirect to='/' />
+    }
+
     return (
       <form onSubmit={this.onSubmit}>
         <input
@@ -51,11 +59,15 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  hasSession: hasSession(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   onLogin: (email, password) => dispatch(doLogin(email, password))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login);

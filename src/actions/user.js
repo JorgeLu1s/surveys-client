@@ -5,6 +5,11 @@ const doLogin = (email, password) => ({
   credentials: { email, password },
 });
 
+const doSetSession = () => ({
+  type: 'SET_SESSION'
+});
+
 export {
   doLogin,
+  doSetSession
 };
