@@ -5,6 +5,12 @@ const fetchSurveys = () =>
   .then(response => response.data)
   .catch(error => 'error');
 
+const createSurvey = survey =>
+  http.post('/surveys', survey)
+  .then(response => response.data)
+  .catch(error => 'error');
+
 export {
-  fetchSurveys
+  fetchSurveys,
+  createSurvey,
 };

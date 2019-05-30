@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-d
 import { Provider } from 'react-redux';
 import App from './components/App';
 import Login from './components/Login';
+import Survey from './components/Survey';
 import store from './store';
 import './index.css';
 
@@ -20,6 +21,7 @@ const routing = (
     <Router>
       <Switch>
         <PrivateRoute exact path='/' component={App}/>
+        <PrivateRoute exact path='/survey' component={Survey}/>
         <Route path='/login' component={Login}/>
       </Switch>
     </Router>

@@ -1,6 +1,7 @@
 import {
   SURVEYS_FETCH,
-  ADD_SURVEYS
+  ADD_SURVEYS,
+  CREATE_SURVEY
 } from '../constants/actionTypes';
 
 const doFetchSurveys = () => ({
@@ -12,7 +13,13 @@ const doAddSurveys = surveys => ({
   surveys
 });
 
+const doCreateSurvey = survey => ({
+  type: CREATE_SURVEY,
+  survey
+});
+
 export {
   doFetchSurveys,
-  doAddSurveys
+  doAddSurveys,
+  doCreateSurvey,
 };
