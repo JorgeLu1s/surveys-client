@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
-import { fetchSurveys, createSurvey } from '../api/survey';
-import { doAddSurveys, doCreateSurvey } from '../actions/survey';
+import { fetchSurveys, createSurvey, fetchSurvey } from '../api/survey';
+import { doAddSurveys, doCreateSurvey, doAddSurvey } from '../actions/survey';
 
 function* handleFetchSurveys(action) {
   const result = yield call(fetchSurveys);
@@ -16,7 +16,15 @@ function* handleCreateSurvey(action) {
   }
 }
 
+function* handleFetchSurvey(action) {
+  const result = yield call(fetchSurvey, action);
+  if (result !== 'error') {
+    yield put(doAddSurvey(result));
+  }
+}
+
 export {
   handleFetchSurveys,
   handleCreateSurvey,
+  handleFetchSurvey,
 };
